@@ -1,0 +1,19 @@
+# This configuration tells build_runner how to handle this package.
+
+targets:
+  $default:
+    # By default, we only want to build files in the 'lib' directory.
+    # We explicitly exclude the 'example' directory to prevent build_runner
+    # from trying to build the Jaspr app when working on the library itself.
+    sources:
+      - "lib/**"
+      - "pubspec.yaml"
+      - "$package$"
+    # By excluding 'example/**', we prevent conflicts and errors.
+    # The example project has its own build configuration and should be built separately.
+    # exclude:
+    #   - "example/**" # In many cases, excluding is a good idea. For now, just specifying sources is enough.
+
+# Since this is a pure Dart library and not a Jaspr application,
+# we don't define any builders here (like jaspr_builder).
+# This file's primary purpose is to scope the build process correctly.
